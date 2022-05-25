@@ -2,4 +2,4 @@ spring:
   application:
     name: libra-server
   profiles:
-    active: local
+    active: hh

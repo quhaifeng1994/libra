@@ -1,1 +1,6 @@
+libra:
+  registration-center:
+    - name: dailynacos
+      type: nacos
+
 
