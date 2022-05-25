@@ -1,0 +1,17 @@
+libra:
+  registration-centers:
+    - name: localConsul
+      type: consul
+      consul:
+        host: localhost
+        port: 8500
+  services:
+    - name: 用户服务
+      service-id: user-server
+      registration-center: localConsul
+      alarm:
+        min-size: 1
+        mustHosts:
+          - 127.0.0.1
+
+

@@ -14,12 +14,12 @@ import lombok.SneakyThrows;
 
 public class NacosDiscoveryClient implements DiscoveryClient {
 
-  private NacosConfig nacosConfig;
+  private NacosConfig config;
   private NamingService namingService;
 
   @SneakyThrows
   public NacosDiscoveryClient(NacosConfig nacosConfig) {
-    this.nacosConfig = nacosConfig;
+    this.config = nacosConfig;
     Properties properties = new Properties();
     properties.put(PropertyKeyConst.NAMESPACE, nacosConfig.getNamespace());
     properties.put(PropertyKeyConst.USERNAME, nacosConfig.getUsername());
@@ -31,7 +31,7 @@ public class NacosDiscoveryClient implements DiscoveryClient {
   @SneakyThrows
   @Override
   public List<ServiceInstance> getInstances(String serviceId) {
-    List<Instance> allInstances = namingService.selectInstances(serviceId, nacosConfig.getGroup(), true);
+    List<Instance> allInstances = namingService.selectInstances(serviceId, config.getGroup(), true);
     if (CollectionUtil.isNotEmpty(allInstances)) {
       return allInstances.stream().map(it -> {
         ServiceInstance instance = new ServiceInstance();
@@ -48,7 +48,7 @@ public class NacosDiscoveryClient implements DiscoveryClient {
   @SneakyThrows
   @Override
   public List<String> getServices() {
-    ListView<String> servicesOfServer = namingService.getServicesOfServer(1, 100_000, nacosConfig.getGroup());
+    ListView<String> servicesOfServer = namingService.getServicesOfServer(1, 100_000, config.getGroup());
     return servicesOfServer.getData() == null ? new ArrayList<>() : servicesOfServer.getData();
   }
 }

@@ -30,6 +30,9 @@ public class RegistrationCenterSupplier {
       if (registrationCenter.getType().equals("nacos")) {
         NacosDiscoveryClient nacosDiscoveryClient = new NacosDiscoveryClient(registrationCenter.getNacos());
         discoveryClientMap.put(registrationCenter.getName(), nacosDiscoveryClient);
+      } else if (registrationCenter.getType().equals("consul")) {
+        ConsulDiscoveryClient consulDiscoveryClient = new ConsulDiscoveryClient(registrationCenter.getConsul());
+        discoveryClientMap.put(registrationCenter.getName(), consulDiscoveryClient);
       }
     }
   }

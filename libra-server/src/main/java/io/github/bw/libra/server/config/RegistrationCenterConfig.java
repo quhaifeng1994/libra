@@ -12,4 +12,5 @@ public class RegistrationCenterConfig {
   private String name;
   private String type;
   private NacosConfig nacos;
+  private ConsulConfig consul;
 }

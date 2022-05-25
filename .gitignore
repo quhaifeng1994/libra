@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 libra-server/src/main/resources/application-hh.yaml
+libra-server/src/main/resources/application-dd.yaml
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
