@@ -1,6 +1,6 @@
 # libra
 
-你可以在 libra 中添加配置来启动
+你可以在 `libra-server/src/main/resources/application-local.yaml` 中添加配置来启动
 
 ```yaml
 libra:
